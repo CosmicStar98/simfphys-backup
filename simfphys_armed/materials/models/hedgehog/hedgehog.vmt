@@ -1,0 +1,42 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models/Hedgehog/Hedgehog"
+	"$bumpmap" "models/Hedgehog/Hedgehog_normal"	
+	//"$surfaceprop" "solidmetal"
+	
+	//"$envmap" "env_cubemap"
+	//"$envmap" "Environment Maps/rg"
+	//"$envmapcontrast" 1
+	//"$envmapsaturation" 1
+	//"$envmaptint" "[ 0.2 0.2 0.2 ]"
+	//"$normalmapalphaenvmapmask" "1"
+		
+	//"$halflambert" "1"
+	//"$nodecal" "1"
+	//"$model" "1"
+	//"$phong" "1"
+	//"$phongexponent" "10"
+	//"$phongexponenttexture" "models/Hedgehog/Hedgehog_exponent"
+	//"$phongboost"	"5"
+	//"$phongfresnelranges"	"[0 0.5 1]"
+	
+	//"$selfillum" "1"
+	//"$selfillumtint" "[3 3 3]"
+	
+	//"$selfillummask" 	"models/Hedgehog/Hedgehog_ilumination"
+	
+	"$phong" "1"
+	"$phongexponent" "20"
+	//"$phongexponenttexture" "models/Hedgehog/Hedgehog_exponent"
+	"$phongboost" "2.5"	
+	"$lightwarptexture" "models/Hedgehog/Hedgehog_lightwarp"
+	//"$phongwarptexture" "models/Hedgehog/Hedgehog_phongwarp"
+	//"$phongalbedotint" "1"
+	"$phongfresnelranges"	"[.05 3 1]"
+	"$halflambert" "1"
+
+	//Rim lighting parameters
+	//"$rimlight" "1"												// To enable rim lighting (requires phong)
+	//"$rimlightexponent" "75"										// Exponent for phong component of rim lighting	
+	//"$rimlightboost" "8"										// Boost for ambient cube component of rim lighting
+}

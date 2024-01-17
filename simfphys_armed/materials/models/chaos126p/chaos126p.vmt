@@ -1,0 +1,19 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "models/chaos126p/chaos126p"
+	"$bumpmap" "models/chaos126p/chaos126p_normal01"
+
+	
+	"$selfillum" "1"
+	
+	"$selfillummask" 	"models/chaos126p/chaos126p_ilumination"
+	
+	"$phong" "1"
+	"$phongexponent" "6"
+
+	"$phongboost" "1"	
+	"$lightwarptexture" "models/chaos126p/chaos126p_lightwarp"
+
+	"$phongfresnelranges"	"[.05 3 1]"
+	"$halflambert" "1"
+}

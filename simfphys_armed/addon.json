@@ -1,0 +1,10 @@
+{
+	"title"		: "simfphys armed vehicles",
+	"type"		: "vehicle",
+	"tags"		: [ "fun", "build" ],
+	"ignore"	: [
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}

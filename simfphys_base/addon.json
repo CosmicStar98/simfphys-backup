@@ -1,0 +1,10 @@
+{
+	"title"		: "simfphys LUA Vehicles - Base",
+	"type"		: "vehicle",
+	"tags"		: [ "fun", "build" ],
+	"ignore"	: [
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}

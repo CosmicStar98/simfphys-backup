@@ -1,0 +1,123 @@
+entity = the vehicle base entity, NOT THE SEAT
+
+ply:GetSimfphys()  -- called on a player, returns the simfphys base entity (gmod_sent_vehicle_fphysics_base)
+ply:IsDrivingSimfphys()  -- called on a player, returns true when the player is DRIVING the simfphys vehicle. returns false for passengers.
+
+------ shared
+entity:GetSteerSpeed()	-- returns a number
+entity:GetFastSteerConeFadeSpeed()	-- returns a number
+entity:GetFastSteerAngle()	-- returns a number
+
+entity:GetFrontSuspensionHeight()	-- returns a number
+entity:GetRearSuspensionHeight()	-- returns a number
+
+entity:GetEngineSoundPreset()	-- returns a number
+
+entity:GetRPM() -- gets the current engine rpm. returns a number
+
+entity:GetIdleRPM()	-- returns a number
+entity:GetLimitRPM()	-- returns a number
+entity:GetPowerBandStart()	-- returns a number
+entity:GetPowerBandEnd()	-- returns a number
+entity:GetMaxTorque()	-- returns a number
+entity:GetRevlimiter() -- returns a bool
+
+entity:GetTurboCharged() -- returns a bool
+entity:GetSuperCharged() -- returns a bool
+entity:GetBackFire() -- returns a bool
+entity:GetDoNotStall() -- returns a bool
+
+entity:GetClutch() -- returns a number
+entity:GetThrottle() -- returns a number
+
+entity:GetGear() -- returns a number  (1 = reverse, 2 = neutral, 3 = first gear, 4 = second gear, 5 = third gear, ..., ...)
+entity:GetDifferentialGear() -- returns a number 
+
+entity:GetBrakePower() -- returns a number
+entity:GetPowerDistribution() -- returns a number (1 = rear wheel drive, -1 = front wheel drive, 0 = all wheel drive with power distributed equally on front and rear wheels)
+entity:GetEfficiency() -- returns a number
+entity:GetMaxTraction() -- returns a number
+entity:GetTractionBias() -- returns a number
+entity:GetTireSmokeColor() -- returns a vector
+
+entity:GetIsCruiseModeOn() -- returns a bool,  is the cruise control enabled?
+entity:GetIsBraking() -- returns true when braking
+entity:GetLightsEnabled() -- returns true when the lowbeams are active
+entity:GetLampsEnabled() -- returns true when the highbeams are active
+
+entity:GetEMSEnabled() -- returns true when the emergency system is active
+
+entity:GetFogLightsEnabled() -- returns true when the fog lights are active
+entity:GetHandBrakeEnabled() -- returns true when the handbrake is active
+
+entity:GetVehicleSteer() -- returns a number, (from -1 to 1, its used for the steering poseparameter for the player)
+entity:GetDriver() -- returns an entity
+entity:GetDriverSeat() -- returns an entity
+entity:GetActive() -- returns true when the vehicle is active. note that the engine can still be inactive even when the vehicle itself is active
+
+entity:GetSpawn_List() -- returns the vehicle spawnname as string
+entity:GetLights_List() -- returns the lights listname as string
+
+entity:GetSoundoverride() -- returns an string
+
+entity:GetCurHealth()  -- returns the current health as number
+entity:GetMaxHealth()  -- returns the max health as number
+
+
+-- server
+entity:SteerVehicle( number ) -- sets the ANGLE of the steering.
+entity:Lock()  -- locks the vehicle
+entity:UnLock() -- unlocks the vehicle
+
+entity:EngineActive()	-- returns true if the engine is running. false when not
+entity:StopEngine()	-- stops the engine
+entity:StartEngine( bKeepGear = false )  -- starts the engine and resets to neutral gear if bKeepGear is nil or false
+entity:StallAndRestart( ntime = 1, bKeepGear = false )  -- stalls the engine and restarts it after set amount of time.
+
+entity:DamagedStall() -- stalls the engine and restarts with backfiring
+
+entity:SetMaxHealth( nHealth ) -- sets the max health
+entity:SetCurHealth( nHealth ) -- sets the current health
+
+__________________________________________________________________________
+-- vehicle controling without driver
+
+there is no support for vehicle controlling yet but there is a hacky way to do by overriding the joystick controls:
+
+first step is to decide if the vehicle should be manual or automatic.
+Every vehicle without driver is in automatic transmission mode by default.
+If you want to change that you have to do:
+entity.ForceTransmission = 2  --(1 = automatic, 2 = manual)
+
+Now we have to set the vehicle to active.
+Note that an active vehicle doesn't mean that the engine will be running. Its just so the car sets itself into "waiting" state and sets the physics correctly:
+entity:SetActive( true ) 
+
+next step is to start the engine
+entity:StartEngine()
+
+ok. Now the vehicle should be running and be moveable with the physgun without the wheels locking up.
+
+To control the vehicle you have overwrite these variables (they go from 0 - 1):
+
+entity.PressedKeys["joystick_steer_left"] = 0
+entity.PressedKeys["joystick_steer_right"] = 0
+entity.PressedKeys["joystick_brake"] = 0      -- this is also used as "reverse throttle" when in automatic mode
+entity.PressedKeys["joystick_throttle"] = 0
+entity.PressedKeys["joystick_gearup"] = 0    -- only used on manual transmission
+entity.PressedKeys["joystick_geardown"] = 0    -- only used on manual transmission
+entity.PressedKeys["joystick_handbrake"] = 0
+entity.PressedKeys["joystick_clutch"] = 0    -- only used on manual transmission
+entity.PressedKeys["joystick_air_w"] = 0
+entity.PressedKeys["joystick_air_a"] = 0
+entity.PressedKeys["joystick_air_s"] = 0
+entity.PressedKeys["joystick_air_d"] = 0
+
+i think its obvious which variable does what.
+
+for steering you can use both the joystick variables or the function:
+entity:SteerVehicle( number )  -- sets the steering ANGLE. Unlike the joystick variables this sets the actual steering angle
+
+
+
+

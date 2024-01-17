@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	"$basetexture" "effects/simfphys_armed/spark"
+	"$brightness" "effects/simfphys_armed/spark_brightness"
+	"$additive" 1
+	"$vertexcolor" 1
+}

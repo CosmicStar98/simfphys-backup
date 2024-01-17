@@ -1,0 +1,17 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "models/ratmobile/ratmobile"
+	"$bumpmap" "models/ratmobile/ratmobile_normal"
+	
+	"$selfillum" "1"
+	"$selfillumtint" "[3 3 3]"
+	
+	"$selfillummask" 	"models/ratmobile/ratmobile_ilumination"
+	
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "3.5"	
+	"$lightwarptexture" "models/ratmobile/ratmobile_lightwarp"
+	"$phongfresnelranges"	"[.05 3 1]"
+	"$halflambert" "1"
+}

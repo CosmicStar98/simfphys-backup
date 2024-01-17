@@ -1,0 +1,21 @@
+"VertexlitGeneric"
+{
+
+	"$basetexture" "models\blu\t90ms\t90ms_body_b_c"
+	"$bumpmap" "models\blu\t90ms\t90ms_body_n"
+	"$halflambert" "1"				
+	"$nocull" 1		
+
+	"$normalmapalphaenvmapmask" 1				
+	"$envmap" "env_cubemap"					
+	"$envmaptint" "[ .01 .01 .01 ]"					
+ 	"$envmapFresnel" "0.5"					
+
+	"$phong" "1"						
+	"$phongexponenttexture" "models\blu\t90ms\t90ms_body_exp"
+	"$phongboost" "0.6"						
+	"$phongfresnelranges"	"[ .2 1.2 8]"	
+
+	"$PhongAlbedoTint" "1"		
+
+}
